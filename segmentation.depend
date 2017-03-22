@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1489447475 source:/home/phammai/Documents/code_cpp/segmentation/main.cpp
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<iostream>
+	"include/segmentation.h"
+
+1489447389 /home/phammai/Documents/code_cpp/segmentation/include/segmentation.h
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<iostream>
+
+1489445954 source:/home/phammai/Documents/code_cpp/segmentation/src/segmentation.cpp
+	"segmentation.h"
+
