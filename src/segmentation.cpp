@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2017 Alexandre Marquet.
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -140,7 +140,7 @@ void segmentation<T>::find_all_segments(unsigned int dist)
     for(m_img_ptr = 0; m_img_ptr < (size_t)m_img.cols*(size_t)m_img.rows; ++m_img_ptr){
         px_xy = lin_to_xy(m_img_ptr);
 
-        if(m_img.at<uchar>(px_xy[0], px_xy[1]) != 0) {
+        if(!m_already_seen_pxs[m_img_ptr] && m_img.at<T>(px_xy[0], px_xy[1]) != 0) {
             m_segments.push_back(find_segment(dist));
         }
     }
@@ -153,6 +153,7 @@ void segmentation<T>::convert_segments_to_img(size_t minsize)
     vector<size_t> segment;
     Mat img_segment;
     vector<int> px_xy;
+
 
     for (size_t i = 0; i < m_segments.size(); ++i){
         segment = m_segments[i];
